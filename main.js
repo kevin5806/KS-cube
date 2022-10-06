@@ -22,7 +22,7 @@ function init() {
 	document.body.appendChild(renderer.domElement).classList.add("cubo");
 
 	// Init BoxGeometry object (rectangular cuboid)
-	const geometry = new THREE.BoxGeometry(1, 1, 1);
+	const geometry = new THREE.BoxGeometry(3,3,3);
 
 	// Create material with color
 	//const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
