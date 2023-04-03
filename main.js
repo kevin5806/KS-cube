@@ -83,7 +83,7 @@ function init() {
 	console.log(getRandomInt(5));
 
 	// Add texture - 
-	 const texture = new THREE.TextureLoader().load(textureName);
+	 const texture = new THREE.TextureLoader().load("https://source.unsplash.com/random/?texture");
 
 	// Create material with texture
 	 const material = new THREE.MeshBasicMaterial({ map: texture });
