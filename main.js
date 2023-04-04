@@ -116,9 +116,9 @@ function valore() {
 	let valore;
 
 	if (Math.random() < 0.5) {
-		valore = -5 / 1200;
+		valore = -5 / (getRandomInt(600) + 300);
 	} else {
-		valore = 5 / 800;
+		valore = 5 / (getRandomInt(600) + 300);
 	}
 
 	return valore;
@@ -126,9 +126,14 @@ function valore() {
 
 // Draw the scene every time the screen is refreshed
 function animate() {
-	requestAnimationFrame(animate);
+	
+	setTimeout( function() {
 
-	if (countz < 600) {
+        requestAnimationFrame( animate );
+
+    }, 1000 / 60 );
+
+	if (countz < (300 + getRandomInt(300))) {
 
 		cube.rotation.z += salvoValorez
 		countz++;
@@ -141,7 +146,7 @@ function animate() {
 		cube.rotation.z += salvoValorez;
 	}
 
-	if (countx < 500) {
+	if (countx < (300 + getRandomInt(500))) {
 
 		cube.rotation.x += salvoValorex
 		countx++;
@@ -154,7 +159,7 @@ function animate() {
 		cube.rotation.x += salvoValorez;
 	}
 
-	if (county < 700) {
+	if (county < (300 + getRandomInt(400))) {
 
 		cube.rotation.y += salvoValorez
 		county++;
