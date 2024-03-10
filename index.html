@@ -17,6 +17,30 @@
     </style>
 </head>
 <body>
+
+    <!-- Aggiungi il pulsante per avviare la trasmissione -->
+    <button onclick="startCast()">Cast</button>
+    
+    <script>
+    // Inizializza il Cast SDK
+    cast.framework.CastContext.getInstance().setOptions({
+      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+      autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
+    });
+    
+    // Funzione per avviare la trasmissione
+    function startCast() {
+      var mediaInfo = new chrome.cast.media.MediaInfo('URL_DEL_CONTENUTO_DA_TRASMETTERE', 'video/mp4');
+      var request = new chrome.cast.media.LoadRequest(mediaInfo);
+      chrome.cast.framework.CastContext.getInstance().getCurrentSession()
+        .loadMedia(request)
+        .then(
+          function() { console.log('Trasmissione avviata con successo!'); },
+          function(errorCode) { console.error('Errore durante l\'avvio della trasmissione: ' + errorCode); }
+        );
+    }
+    </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.145.0/three.js"></script>
     <script src="main.js"></script>
 </body>
