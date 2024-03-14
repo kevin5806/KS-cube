@@ -7,10 +7,6 @@
     <link rel="shortcut icon" href="favicon-ks.png" type="image/x-icon">
     <title>i'm a cube</title>
 
-    <!-- Aggiungi il link al file JavaScript dell'API di Google Cast -->
-    <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
-    <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/caf_sender/v3/cast_sender.js"></script>
-    
     <style>
         body {
             margin: 0;
@@ -20,37 +16,8 @@
             width: 100%;
         }
     </style>
-    </head>
-    <body>
-
-    <!-- Aggiungi il pulsante per avviare la trasmissione -->
-    <button onclick="startCast()">Trasmetti sulla TV</button>
-    
-    <script>
-    // Inizializza il Cast SDK
-    cast.framework.CastContext.getInstance().setOptions({
-      receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
-      autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
-    });
-    
-    // Funzione per avviare la trasmissione
-    function startCast() {
-      var castSession = cast.framework.CastContext.getInstance().getCurrentSession();
-      if (castSession) {
-        var urlToCast = 'https://cube.kevinleoni.me/'; // Inserisci l'URL del tuo sito web da trasmettere
-        var mediaInfo = new chrome.cast.media.MediaInfo();
-        mediaInfo.contentId = urlToCast;
-        mediaInfo.contentType = 'text/html';
-    
-        var request = new chrome.cast.media.LoadRequest(mediaInfo);
-        castSession.loadMedia(request).then(
-          function() { console.log('Trasmissione avviata con successo!'); },
-          function(errorCode) { console.error('Errore durante l\'avvio della trasmissione: ' + errorCode); }
-        );
-      }
-    }
-    </script>
-    
+</head>
+<body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.145.0/three.js"></script>
     <script src="main.js"></script>
 </body>
